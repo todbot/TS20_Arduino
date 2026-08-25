@@ -16,6 +16,7 @@ and exposes the same API.
 - Response time, sensing rate, step size and sense impedance all
   configurable
 
+
 ## Installation
 
 Install through the Arduino Library Manager by searching for "TS20", or
@@ -98,10 +99,10 @@ ts20.setHighImpedance(true);   // more sensitive, more noise
 
 ## Hardware
 
-The TS20 is a 28-pin I2C capacitive touch controller. Tie its `ADD` pin
-to GND for address `0x6A` (the default) or to VDD for `0x7A`.
+The TS20 is a 28-pin I2C capacitive touch controller. 
+Tie its `ADD` pin to GND for address `0x6A` (the default) or to VDD for `0x7A`.
 
-<!-- TODO: add a link to the breakout board product page -->
+* For an example board, see https://github.com/todbot/TS20_Test_Board/
 
 ## License
 
