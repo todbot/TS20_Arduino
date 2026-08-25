@@ -8,7 +8,7 @@
  * channels CS1-CS20.  Sensitivity is 0-15, where 0 is the *most*
  * sensitive and 15 the least (it is really a touch threshold).
  *
- * Written by Tod Kurt (@todbot).
+ * Written by Tod Kurt (\@todbot).
  *
  * Ported from the CircuitPython TS20 library:
  *   https://github.com/todbot/CircuitPython_TS20

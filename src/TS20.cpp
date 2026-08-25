@@ -12,7 +12,7 @@
  *
  * @section author Author
  *
- * Written by Tod Kurt (@todbot).
+ * Written by Tod Kurt (\@todbot).
  *
  * @section license License
  *
