@@ -1,0 +1,43 @@
+#######################################
+# Syntax Coloring Map For TS20
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TS20	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+reset	KEYWORD2
+touched	KEYWORD2
+isTouched	KEYWORD2
+noiseDetected	KEYWORD2
+getTouches	KEYWORD2
+setSensitivity	KEYWORD2
+setSensitivities	KEYWORD2
+sensitivity	KEYWORD2
+sensitivityPercent	KEYWORD2
+readSensitivityPercent	KEYWORD2
+setFineSteps	KEYWORD2
+setFastMode	KEYWORD2
+setResponseTime	KEYWORD2
+setFirstTouchTime	KEYWORD2
+setHighImpedance	KEYWORD2
+setCalCtrl	KEYWORD2
+setErrCtrl	KEYWORD2
+setResetOnChange	KEYWORD2
+reconfigure	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+TS20_ADDR_GND	LITERAL1
+TS20_ADDR_VDD	LITERAL1
+TS20_ADDR_DEFAULT	LITERAL1
+TS20_NUM_PADS	LITERAL1

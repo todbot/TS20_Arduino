@@ -1,0 +1,13 @@
+# Build and editor artifacts
+build/
+*.o
+*.d
+.DS_Store
+.vscode/
+.idea/
+*~
+
+# Doxygen output (ci-arduino generates this)
+doc/
+html/
+latex/
