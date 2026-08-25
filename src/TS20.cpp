@@ -31,8 +31,7 @@ static const uint8_t sens_lo[11] = {0, 2, 4, 6, 7, 9, 11, 13, 15, 17, 19};
  * Which pad's sensitivity lives in the high nibble.  0xFF marks the two
  * registers whose channel sits alone: ch7 at 0x03 and ch20 at 0x0A.
  */
-static const uint8_t sens_hi[11] = {1,  3,  5,  0xFF, 8, 10,
-                                    12, 14, 16, 18,   0xFF};
+static const uint8_t sens_hi[11] = {1, 3, 5, 0xFF, 8, 10, 12, 14, 16, 18, 0xFF};
 
 /*!
  * Value for an unused high nibble.  Register 0x03's reserved bits want
@@ -449,6 +448,5 @@ void TS20::updateGtrl1() {
  * @brief Rebuild the cached GTRL2 run value (datasheet 8.2.3).
  */
 void TS20::updateGtrl2() {
-  _gtrl2 = (_highImpedance ? TS20_GTRL2_IMP_SEL : 0) |
-           TS20_GTRL2_RB_SEL_NORMAL;
+  _gtrl2 = (_highImpedance ? TS20_GTRL2_IMP_SEL : 0) | TS20_GTRL2_RB_SEL_NORMAL;
 }

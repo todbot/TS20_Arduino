@@ -31,36 +31,36 @@
 #define TS20_NUM_PADS 20 ///< number of touch pads on the chip
 
 // Registers.  Sensitivity/PWM1..11 are contiguous from 0x00 to 0x0A.
-#define TS20_SEN_PWM1 0x00     ///< Sensitivity/PWM1, ch2 & ch1
-#define TS20_GTRL1 0x0B        ///< General Control 1
-#define TS20_GTRL2 0x0C        ///< General Control 2
-#define TS20_CAL_CTRL 0x0D     ///< Calibration speed control
-#define TS20_PORT_CTRL1 0x0E   ///< Port Control 1, ch1-ch4
-#define TS20_PORT_CTRL6 0x13   ///< Port Control 6, ch20
-#define TS20_CAL_HOLD1 0x14    ///< Channel calibration control, ch1-ch7
-#define TS20_CAL_HOLD2 0x15    ///< Channel calibration control, ch8-ch14
-#define TS20_CAL_HOLD3 0x16    ///< Channel calibration control, ch15-ch20
-#define TS20_ERR_CTRL 0x17     ///< Noise environment overcome control
-#define TS20_OUTPUT1 0x20      ///< Touch output, ch1-ch7
-#define TS20_OUTPUT2 0x21      ///< Touch output, ch8-ch15
-#define TS20_OUTPUT3 0x22      ///< Touch output, ch16-ch20 plus noise flag
-#define TS20_REF_WR_H 0x23     ///< Reference count write, high byte
-#define TS20_REF_WR_L 0x24     ///< Reference count write, low byte
-#define TS20_REF_WR_CH1 0x25   ///< Reference count write channel select 1
-#define TS20_REF_WR_CH2 0x26   ///< Reference count write channel select 2
-#define TS20_REF_WR_CH3 0x27   ///< Reference count write channel select 3
-#define TS20_SEN_RD_CTRL 0x28  ///< Sensitivity read channel select
-#define TS20_SEN_RD 0x29       ///< Sensitivity read data
-#define TS20_RD_CH1 0x30       ///< Sense/ref count channel flags 1
-#define TS20_RD_CH2 0x31       ///< Sense/ref count channel flags 2
-#define TS20_RD_CH3 0x32       ///< Sense/ref count channel flags 3
-#define TS20_SEN_H 0x33        ///< Sense count, high byte
-#define TS20_SEN_L 0x34        ///< Sense count, low byte
-#define TS20_REF_H 0x35        ///< Reference count, high byte
-#define TS20_REF_L 0x36        ///< Reference count, low byte
-#define TS20_RD_CH4 0x37       ///< Sense/ref count channel flags, recheck 1
-#define TS20_RD_CH5 0x38       ///< Sense/ref count channel flags, recheck 2
-#define TS20_RD_CH6 0x39       ///< Sense/ref count channel flags, recheck 3
+#define TS20_SEN_PWM1 0x00    ///< Sensitivity/PWM1, ch2 & ch1
+#define TS20_GTRL1 0x0B       ///< General Control 1
+#define TS20_GTRL2 0x0C       ///< General Control 2
+#define TS20_CAL_CTRL 0x0D    ///< Calibration speed control
+#define TS20_PORT_CTRL1 0x0E  ///< Port Control 1, ch1-ch4
+#define TS20_PORT_CTRL6 0x13  ///< Port Control 6, ch20
+#define TS20_CAL_HOLD1 0x14   ///< Channel calibration control, ch1-ch7
+#define TS20_CAL_HOLD2 0x15   ///< Channel calibration control, ch8-ch14
+#define TS20_CAL_HOLD3 0x16   ///< Channel calibration control, ch15-ch20
+#define TS20_ERR_CTRL 0x17    ///< Noise environment overcome control
+#define TS20_OUTPUT1 0x20     ///< Touch output, ch1-ch7
+#define TS20_OUTPUT2 0x21     ///< Touch output, ch8-ch15
+#define TS20_OUTPUT3 0x22     ///< Touch output, ch16-ch20 plus noise flag
+#define TS20_REF_WR_H 0x23    ///< Reference count write, high byte
+#define TS20_REF_WR_L 0x24    ///< Reference count write, low byte
+#define TS20_REF_WR_CH1 0x25  ///< Reference count write channel select 1
+#define TS20_REF_WR_CH2 0x26  ///< Reference count write channel select 2
+#define TS20_REF_WR_CH3 0x27  ///< Reference count write channel select 3
+#define TS20_SEN_RD_CTRL 0x28 ///< Sensitivity read channel select
+#define TS20_SEN_RD 0x29      ///< Sensitivity read data
+#define TS20_RD_CH1 0x30      ///< Sense/ref count channel flags 1
+#define TS20_RD_CH2 0x31      ///< Sense/ref count channel flags 2
+#define TS20_RD_CH3 0x32      ///< Sense/ref count channel flags 3
+#define TS20_SEN_H 0x33       ///< Sense count, high byte
+#define TS20_SEN_L 0x34       ///< Sense count, low byte
+#define TS20_REF_H 0x35       ///< Reference count, high byte
+#define TS20_REF_L 0x36       ///< Reference count, low byte
+#define TS20_RD_CH4 0x37      ///< Sense/ref count channel flags, recheck 1
+#define TS20_RD_CH5 0x38      ///< Sense/ref count channel flags, recheck 2
+#define TS20_RD_CH6 0x39      ///< Sense/ref count channel flags, recheck 3
 
 // GTRL2 bit fields (datasheet 8.2.3)
 #define TS20_GTRL2_IMP_SEL 0x10       ///< 1 = high sense impedance
