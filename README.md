@@ -33,6 +33,10 @@ void setup() {
   Serial.begin(115200);
   delay(100);  // wait 100 msec after power up, as per the datasheet
 
+  // begin() defaults to address 0x6A on the Wire bus. Pass an address
+  // and a bus object to use a different one, e.g. &Wire1 on boards
+  // that have a second I2C bus:
+  // if (!ts20.begin(TS20_ADDR_DEFAULT, &Wire1)) {
   if (!ts20.begin()) {
     Serial.println("No TS20 found, check wiring!");
     while (1) { delay(10); }
