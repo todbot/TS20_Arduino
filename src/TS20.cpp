@@ -56,7 +56,7 @@ TS20::TS20() {
   _highImpedance = false;
   _calCtrl = TS20_DEFAULT_CAL_CTRL;
   _errCtrl = TS20_DEFAULT_ERR_CTRL;
-  _resetOnChange = true;
+  _resetOnChange = false;
   for (uint8_t i = 0; i < TS20_NUM_PADS; i++) {
     _sens[i] = TS20_DEFAULT_SENSITIVITY;
   }
@@ -200,36 +200,6 @@ float TS20::sensitivityPercent(uint8_t pad) {
     return _sens[pad] * 0.1f + 0.05f;
   }
   return _sens[pad] * 0.2f + 0.15f;
-}
-
-/*!
- * @brief Read back the sensitivity the TS20 currently measures on a pad.
- *
- * This is a measurement, not the value set by setSensitivity(), and is
- * useful when tuning per-pad values.  Blocks for ~150ms per call.
- *
- * UNTESTED on hardware.  Datasheet 8.2.11 literally says
- * "Sensitivity(%) = SEN_DATA/2048", but an 8-bit SEN_DATA cannot reach
- * the 1.15% reset default that way, so SEN_DATA/2048 is read here as a
- * fraction and scaled to a percent.
- *
- * @param pad Pad number, 0 to 19.
- * @return Measured sensitivity in percent, or -1.0 on error.
- */
-float TS20::readSensitivityPercent(uint8_t pad) {
-  if (pad >= TS20_NUM_PADS) {
-    return -1.0f;
-  }
-  // SEN_RD_CHANNEL skips code 01000, so channels 8-20 are offset by one
-  uint8_t ch = pad + 1;
-  writeRegister(TS20_SEN_RD_CTRL, (ch <= 7) ? ch : (uint8_t)(ch + 1));
-  delay(150); // tRD, 25ms fast / 130ms slow (datasheet 8.2.10)
-
-  uint8_t data = 0;
-  if (!readBlock(TS20_SEN_RD, &data, 1)) {
-    return -1.0f;
-  }
-  return (float)data * 100.0f / 2048.0f;
 }
 
 /*!
@@ -419,9 +389,11 @@ void TS20::packSensitivity(uint8_t *buf) {
 /*!
  * @brief Write the sensitivity registers out to the chip.
  *
- * The chip may only latch these across a soft reset, and the reset may
- * clear the rest of the register file with them, so do a full reset()
- * unless the caller has turned that off.
+ * One block write is enough: measured on a TS20, the chip applies new
+ * sensitivity values as soon as they are written, and asserting SRST
+ * neither clears the register file nor is needed to latch them.
+ * setResetOnChange(true) rewrites everything anyway, for boards that
+ * turn out to disagree.
  */
 void TS20::writeSensitivity() {
   if (!_begun) {

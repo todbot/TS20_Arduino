@@ -99,7 +99,6 @@ public:
   void setSensitivities(const uint8_t *values);
   uint8_t sensitivity(uint8_t pad);
   float sensitivityPercent(uint8_t pad);
-  float readSensitivityPercent(uint8_t pad);
 
   void setFineSteps(bool fineSteps);
   void setFastMode(bool fastMode);
@@ -110,15 +109,18 @@ public:
   void setErrCtrl(uint8_t errCtrl);
 
   /*!
-   * @brief Control whether sensitivity changes trigger a full reset.
+   * @brief Control whether sensitivity changes rewrite the whole config.
    *
-   * The chip may only latch sensitivity writes across a soft reset, and
-   * that reset may clear the rest of the register file with them, so by
-   * default every change rewrites the whole configuration.  Turning this
-   * off makes changes a single block write, which avoids the brief
-   * recalibration blank but may not take effect on all boards.
+   * Off by default: measured on a TS20, the chip applies new sensitivity
+   * values as soon as they are written, and asserting SRST neither
+   * clears the register file nor is needed to latch them.  A change is
+   * therefore a single block write.  Turning this on rewrites the entire
+   * configuration instead, which also soft-resets the chip; that
+   * restarts calibration, so a touch already in progress gets absorbed
+   * into the new baseline.
    *
-   * @param resetOnChange true (default) to reconfigure on every change.
+   * @param resetOnChange true to reconfigure on every change, false
+   *        (default) to write only the sensitivity registers.
    */
   void setResetOnChange(bool resetOnChange) { _resetOnChange = resetOnChange; }
 
@@ -149,7 +151,7 @@ private:
   uint8_t _responseTime;   ///< GTRL1 RTC, sense periods before reporting
   uint8_t _firstTouchTime; ///< GTRL1 FTC, fast-calibration window
   bool _highImpedance;     ///< GTRL2 IMP_SEL
-  bool _resetOnChange;     ///< reconfigure on every sensitivity change
+  bool _resetOnChange;     ///< rewrite whole config on a sensitivity change
 };
 
 #endif // TS20_H

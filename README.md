@@ -75,12 +75,12 @@ ts20.sensitivity(0);             // read a pad's setting back
 ts20.sensitivityPercent(0);      // as a % change in pad capacitance
 ```
 
-Changing sensitivity soft-resets the chip, because it may only latch the
-new values across a reset, and that reset can clear the rest of the
-configuration with them. The reset restarts calibration, which blanks
-touches for a moment. If your board picks up new values without it,
-`ts20.setResetOnChange(false)` turns the reset off and makes changes a
-single block write.
+Changing sensitivity is a single block write. The chip applies the new
+values as soon as they are written, so no reset is involved and a touch
+in progress is undisturbed. `ts20.setResetOnChange(true)` makes every
+change rewrite the whole configuration instead, which also soft-resets
+the chip; that restarts calibration, so use it only if your board turns
+out to need it.
 
 ### Other settings
 

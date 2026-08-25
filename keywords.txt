@@ -22,7 +22,6 @@ setSensitivity	KEYWORD2
 setSensitivities	KEYWORD2
 sensitivity	KEYWORD2
 sensitivityPercent	KEYWORD2
-readSensitivityPercent	KEYWORD2
 setFineSteps	KEYWORD2
 setFastMode	KEYWORD2
 setResponseTime	KEYWORD2
