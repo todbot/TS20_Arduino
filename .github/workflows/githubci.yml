@@ -1,9 +1,26 @@
 name: Arduino Library CI
 
-on: [pull_request, push, repository_dispatch]
+# workflow_dispatch lets you run this from the Actions tab, or with
+# `gh workflow run "Arduino Library CI"`, without needing a push.
+on: [pull_request, push, repository_dispatch, workflow_dispatch]
 
 jobs:
+  lint:
+    name: Arduino Lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Check library against Library Manager submission rules
+      uses: arduino/arduino-lint-action@v3
+      with:
+        compliance: strict
+        library-manager: submit
+        project-type: library
+
   build:
+    name: Build examples
     runs-on: ubuntu-latest
 
     steps:
