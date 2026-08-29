@@ -12,11 +12,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Check library against Library Manager submission rules
+    - name: Check library against Library Manager rules
       uses: arduino/arduino-lint-action@v3
       with:
         compliance: strict
-        library-manager: submit
+        # TS20 is listed in Library Manager, so use the rules for an
+        # already-indexed library. This also catches an accidental
+        # rename, which would orphan the registry entry.
+        library-manager: update
         project-type: library
 
   build:
@@ -35,6 +38,11 @@ jobs:
 
     - name: Install the prerequisites
       run: bash ci/actions_install.sh
+
+    # NeoPixel is used only by the ts20_neopixel example, so it is not
+    # listed in library.properties `depends`. Install it here instead.
+    - name: Install example-only libraries
+      run: arduino-cli lib install "Adafruit NeoPixel"
 
     - name: Check for correct code formatting with clang-format
       run: python3 ci/run-clang-format.py -e "ci/*" -e "bin/*" -r .

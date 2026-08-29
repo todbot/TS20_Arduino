@@ -94,8 +94,9 @@ ts20.setHighImpedance(true);   // more sensitive, more noise
 ## Examples
 
 - **ts20_simpletest** — prints touched pads to the Serial Monitor
-- **ts20_neopixel** — lights an 8x8 NeoPixel grid from the pads
-  (needs the Adafruit NeoPixel library)
+- **ts20_neopixel** — lights an 8x8 NeoPixel grid from the pads.
+  This example only: install "Adafruit NeoPixel" with the Library
+  Manager first. It is not a dependency of the library itself.
 
 ## Hardware
 
@@ -103,6 +104,10 @@ The TS20 is a 28-pin I2C capacitive touch controller.
 Tie its `ADD` pin to GND for address `0x6A` (the default) or to VDD for `0x7A`.
 
 * For an example board, see https://github.com/todbot/TS20_Test_Board/
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
